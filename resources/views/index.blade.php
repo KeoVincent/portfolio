@@ -19,22 +19,23 @@
                 <div class="text">
                     <span>
                         <pre>
- /$$   /$$            /$$$$$$   /$$$$$$ 
+ /$$   /$$            /$$$$$$   /$$$$$$
 | $$  /$$/           /$$__  $$ /$$__  $$
 | $$ /$$/   /$$$$$$ | $$  \ $$| $$  \__/
-| $$$$$/   /$$__  $$| $$  | $$|  $$$$$$ 
+| $$$$$/   /$$__  $$| $$  | $$|  $$$$$$
 | $$  $$  | $$$$$$$$| $$  | $$ \____  $$
 | $$\  $$ | $$_____/| $$  | $$ /$$  \ $$
 | $$ \  $$|  $$$$$$$|  $$$$$$/|  $$$$$$/
-|__/  \__/ \_______/ \______/  \______/   
+|__/  \__/ \_______/ \______/  \______/
 
-Copyleft (&#8579;) 1994-2025 Vincent Keo
+Copyleft (&#8579;) under GNU.GPL 1994 by Vincent Keo
 
+The GNU General Public License is a free, copyleft license for software and other kinds of works.
 
                         </pre>
                     </span>
                 </div>
-                <div class="menu">
+                {{-- <div class="menu">
                     <header>
                         Main Menu
                     </header>
@@ -44,23 +45,23 @@ Copyleft (&#8579;) 1994-2025 Vincent Keo
                         <li><a href="#" title="">About</a></li>
                         <li><a href="#" title="">Contact</a></li>
                     </ul>
-                    <form action="post" class="absolute bottom-0 flex flex-col items-center">
-                        @csrf
-                        <input type="text" name="id-input" id="id-input"
-                            class="m-1 max-w-40 p-1 rounded-md text-black">
-                        <input type="password" name="pw-input" id="pw-input" class="m-1 max-w-40 p-1 rounded-md">
-                        <button type="submit"
-                            class="bg-zinc-500 text-zinc-50 m-1 max-w-32 p-1 rounded-md">Login</button>
-                    </form>
                     <footer>
                         <div class="key">Exit: <span>1</span></div>
                         <div class="key">Select: <span>2</span></div>
                     </footer>
-                </div>
+                </div> --}}
             </div>
         </div>
     </main>
 </body>
+<form action="post" class="id-form absolute top-1/4 flex flex-col items-center">
+    @csrf
+    <input type="text" name="id-input" id="id-input"
+        class="m-1 max-w-40 p-1 rounded-md text-black">
+    <input type="password" name="pw-input" id="pw-input" class="m-1 max-w-40 p-1 rounded-md">
+    <button type="submit"
+        class="bg-zinc-500 text-zinc-50 m-1 max-w-32 p-1 rounded-md">SIGN IN</button>
+</form>
 
 </html>
 
@@ -70,10 +71,10 @@ Copyleft (&#8579;) 1994-2025 Vincent Keo
         ctx = canvas.getContext('2d'),
         text = document.querySelector('.text'),
         ww = window.innerWidth,
-        menu = document.querySelector('.menu'),
-        ul = menu.querySelector('ul'),
+        // menu = document.querySelector('.menu'),
+        // ul = menu.querySelector('ul'),
         idx = 0,
-        count = ul.childElementCount - 1,
+        // count = ul.childElementCount - 1,
         toggle = true,
         frame;
 
@@ -116,27 +117,27 @@ Copyleft (&#8579;) 1994-2025 Vincent Keo
         }, 1000);
     });
 
-    window.addEventListener('keydown', function(e) {
-        var key = e.keyCode;
-        var prev = idx;
-        if (key == 38 || key == 40) {
-            e.preventDefault();
+    // window.addEventListener('keydown', function(e) {
+    //     var key = e.keyCode;
+    //     var prev = idx;
+    //     if (key == 38 || key == 40) {
+    //         e.preventDefault();
 
-            switch (key) {
-                case 38:
-                    if (idx > 0) {
-                        idx--;
-                    }
-                    break;
-                case 40:
-                    if (idx < count) {
-                        idx++;
-                    }
-                    break;
-            }
+    //         switch (key) {
+    //             case 38:
+    //                 if (idx > 0) {
+    //                     idx--;
+    //                 }
+    //                 break;
+    //             case 40:
+    //                 if (idx < count) {
+    //                     idx++;
+    //                 }
+    //                 break;
+    //         }
 
-            ul.children[prev].classList.remove('active');
-            ul.children[idx].classList.add('active');
-        }
-    }, false);
+    //         ul.children[prev].classList.remove('active');
+    //         ul.children[idx].classList.add('active');
+    //     }
+    // }, false);
 </script>
