@@ -37,13 +37,13 @@ More info on the license : www.gnu.org/licenses/gpl-3.0.en.html
 
 Press ENTER to access website or type --help for additional commands.
                         </pre>
+                        <div class="flex ">
+                            <div class="prompt">$</div>
+                            <div class="user-input"></div>
+                            <div class="cursor">█</div>
+                        </div>
                     </span>
                 </div>
-                <span class="terminal-input">
-                    <span class="prompt">$</span>
-                    <span class="user-input"></span>
-                    <span class="cursor">█</span>
-                </span>
             </div>
         </div>
     </main>
@@ -54,9 +54,9 @@ Press ENTER to access website or type --help for additional commands.
 <script>
     var main = document.querySelector('main'),
         canvas = document.getElementById('canvas'),
-        ctx = canvas.getContext('2d'),
         text = document.querySelector('.text'),
         terminalInput = document.querySelector('.terminal-input'),
+        userInput = document.querySelector('.user-input'),
         ww = window.innerWidth,
         toggle = true,
         frame;
@@ -71,11 +71,20 @@ Press ENTER to access website or type --help for additional commands.
         text.appendChild(span);
     }
 
+    document.addEventListener('keydown', function(e) {
+        userInput.innerText += e.key;
+        if (!e.repeat) {
+            console.log(`Key "${e.key}" pressed [event: keydown]`);
+        } else {
+            console.log(`Key "${e.key}" repeating [event: keydown]`);
+        }
+    });
+
     window.addEventListener('DOMContentLoaded', function(e) {
         setTimeout(function() {
             main.classList.add('on');
             main.classList.remove('off');
             animate();
         }, 1000);
-    }); 
+    });
 </script>
